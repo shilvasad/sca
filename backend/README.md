@@ -1,0 +1,2 @@
+# Backend API for Shahid Cadet Academy Website.
+This API provides endpoints for managing students, teachers, guardians, classes, subjects, exams, routines, attendance, results, fees, library, transport, hostel, events, timetable, and more.

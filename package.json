@@ -1,0 +1,13 @@
+{
+  "name": "sca",
+  "version": "1.0.0",
+  "description": "This project is for the official website of Shahid Cadet Academy, a school in Dhaka, Bangladesh. This website is aim to manage the official information at on ease.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

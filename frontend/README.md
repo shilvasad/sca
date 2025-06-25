@@ -1,0 +1,2 @@
+# Frontend for Shahid Cadet Academy Website. 
+This frontend provides a user-friendly interface for students, teachers, guardians, and administrators to access and manage various aspects of the academy.
