@@ -27,6 +27,12 @@ app.get("/", (req, res) => {
     </html>`
   );
 });
+app.get("/health", (req, res) => {
+  res.send("Server is running");
+});
+app.get('/test', (req, res)=>{
+  res.send("Hello World");
+})
 
 export default app;
 
