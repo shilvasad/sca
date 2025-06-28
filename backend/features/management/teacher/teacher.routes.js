@@ -14,16 +14,17 @@ import {
   getTeacherById,
   updateTeacherById,
   deleteTeacherById,
+  
 } from "./teacher.controller.js";
+
 
 const router = express.Router();
 
-// Teacher management endpoints
-router.get("/test", (req, res) => res.send("Teachers Management Page."));
-router.post("/add", addTeacher);
-router.get("/all", getAllTeachers);
-router.get("/:id", getTeacherById);
-router.put("/:id", updateTeacherById);
-router.delete("/:id", deleteTeacherById);
+// RESTful teacher management endpoints
+router.post("/", addTeacher); // Create
+router.get("/", getAllTeachers); // Read all
+router.get("/:id", getTeacherById); // Read one
+router.put("/:id", updateTeacherById); // Update
+router.delete("/:id", deleteTeacherById); // Delete
 
 export default router;
