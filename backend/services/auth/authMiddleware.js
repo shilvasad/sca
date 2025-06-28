@@ -1,11 +1,12 @@
 import jwt from "jsonwebtoken";
 import Teacher from "../../features/management/teacher/teacher.model.js";
 
-// Protect Routes
-
-async function protect(req, res, next) {
+/**
+ * Middleware to protect routes (JWT authentication)
+ */
+export async function protect(req, res, next) {
   let token;
-  if (req.cookies.token) {
+  if (req.cookies && req.cookies.token) {
     token = req.cookies.token;
   } else if (
     req.headers.authorization &&
@@ -31,8 +32,11 @@ async function protect(req, res, next) {
   }
 }
 
-// Authorize Roles
-function authorizedRoles(...roles) {
+/**
+ * Middleware to authorize roles
+ * @param  {...string} roles
+ */
+export function authorizedRoles(...roles) {
   return (req, res, next) => {
     if (!req.teacher || !roles.includes(req.teacher.role)) {
       return res.status(403).json({
@@ -44,5 +48,3 @@ function authorizedRoles(...roles) {
     next();
   };
 }
-
-export { protect, authorizedRoles };

@@ -16,13 +16,10 @@ import {
   deleteTeacherById,
 } from "./teacher.controller.js";
 
-
 const router = express.Router();
 
-// Testing route
-router.get("/test", (req, res) => {
-  res.send("Teachers Management Page.");
-});
+// Teacher management endpoints
+router.get("/test", (req, res) => res.send("Teachers Management Page."));
 router.post("/add", addTeacher);
 router.get("/all", getAllTeachers);
 router.get("/:id", getTeacherById);

@@ -34,30 +34,24 @@ const teacherSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please add a role."],
       default: "teacher",
-      enum: {
-        values: ["teacher", "admin"],
-        message:
-          "{VALUE} is not a valid role. Valid roles are teacher or admin.",
-      },
+      enum: ["teacher", "admin"],
     },
   },
-  {timestamps: true }
+  { timestamps: true }
 );
 
 // Hash password before saving
 teacherSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    return next();
-  }
+  if (!this.isModified("password")) return next();
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
 
-// Method to compare passwords
+// Compare password method
 teacherSchema.methods.comparePassword = async function (candidatePassword) {
-  return await bcrypt.compare(candidatePassword, this.password);
+  return bcrypt.compare(candidatePassword, this.password);
 };
 
-const Teacher = mongoose.model.Teacher || mongoose.model("Teacher", teacherSchema);
+const Teacher = mongoose.models.Teacher || mongoose.model("Teacher", teacherSchema);
 export default Teacher;

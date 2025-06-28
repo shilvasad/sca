@@ -1,9 +1,10 @@
-import express from 'express';
+import express from "express";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/', (req, res)=>{
-    res.send('Student Management API')
-})
+// Student management API test endpoint
+router.get("/", (req, res) => {
+  res.status(200).send("Student Management API");
+});
 
-export default router
+export default router;

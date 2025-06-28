@@ -3,13 +3,20 @@ import routes from "./routes/index.js";
 
 const app = express();
 
+// Middleware for parsing JSON
 app.use(express.json());
 
+// Mount main routes
 app.use("/", routes);
 
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.status(200).send("Server is running");
+});
+
+// Root endpoint with API docs link
 app.get("/", (req, res) => {
-  const API_DOCS_URL = process.env.API_DOCS_URL;
-  const CLIENT_URL = process.env.CLIENT_URL;
+  const { API_DOCS_URL, CLIENT_URL } = process.env;
   res.send(
     `<!doctype html>
     <html lang="en">
@@ -22,17 +29,16 @@ app.get("/", (req, res) => {
       <body>
         <h1>Welcome to Shahid Cadet Academy, Uttara.</h1>
         <h2>Server endpoint is open.</h2>
-        <p>Visit the documentation at our <a href=${CLIENT_URL}${API_DOCS_URL}>API Docs</a></p>
+        <p>Visit the documentation at our <a href="${CLIENT_URL}${API_DOCS_URL}">API Docs</a></p>
       </body>
     </html>`
   );
 });
-app.get("/health", (req, res) => {
-  res.send("Server is running");
+
+// Simple test endpoint
+app.get("/test", (req, res) => {
+  res.status(200).send("Hello World");
 });
-app.get('/test', (req, res)=>{
-  res.send("Hello World");
-})
 
 export default app;
 
